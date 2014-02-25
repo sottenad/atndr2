@@ -1,0 +1,15 @@
+Venues:
+<ul>
+<% @venues.each do |v| %>
+	<li>
+	id:  <%= v.id %> <br />
+	name: <%= v.name %> <br />
+	lat: <%= v.lat %> <br />
+	long: <%= v.long %> <br />
+	address: <%= v.address %> <br />
+	city: <%= v.city %> <br />
+	zip: <%= v.zip %> <br />
+	</li>
+	
+<% end %>
+</ul>
