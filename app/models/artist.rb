@@ -1,6 +1,6 @@
 class Artist < ActiveRecord::Base
 	belongs_to :show
-	has_many :genre
+	has_many :genres
 	
 	include PgSearch
 	pg_search_scope :search_by_name, :against=> :name, 

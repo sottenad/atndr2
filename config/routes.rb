@@ -1,5 +1,8 @@
 Atndr2::Application.routes.draw do
 
+  get "api/shows", defaults: {format: :json}
+  get "api/artist", defaults: {format: :json}
+  get "api/venues", defaults: {format: :json}
   get "map/home"
   get "venues/index"
   get "venues/new"

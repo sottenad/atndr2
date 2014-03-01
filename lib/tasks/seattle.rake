@@ -11,7 +11,8 @@ namespace :seattle do
 		#get venues
 		today = Date.today
 		for i in 0..30
-			timestamp = (today+i).to_s
+			currentDate = today+i
+			timestamp = currentDate.to_s
 			puts 'Making Venues/Artists/Shows for: '+timestamp
 			
 			originalUrl = baseUrl+'/gyrobase/EventSearch?eventSection=3208279&narrowByDate='+timestamp
@@ -45,7 +46,7 @@ namespace :seattle do
 						name = v.css('a').text
 						location = v.xpath('text()').text.strip + ' Seattle, WA'
 						if(!name.nil? && !location.nil?)
-							nv = {"name" => name, "raw_address" => location}
+							nv = {:name => name, :raw_address => location}
 							found = Venue.find_or_make_venue(nv);
 							sv = found
 						end
@@ -70,7 +71,7 @@ namespace :seattle do
 					end #artistStr.each
 				
 					#Create Show
-					ns = Show.new({"venue" => sv, "artists" => artistArr, :date => today});
+					ns = Show.new({:venue => sv, :artists => artistArr, :date => currentDate});
 					ns.save
 
 				end #eventListings.each

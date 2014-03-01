@@ -11,7 +11,7 @@ class Venue < ActiveRecord::Base
 		
 	def self.find_or_make_venue(hash)
 		results = Venue.search_by_name(hash[:name])
-		if(results.length > 0)
+		if(results.count > 0)
 			return results.first
 		else
 			newVenue = Venue.new(hash)

@@ -1,1 +1,106 @@
-    <div id="map-canvas"/>
+<div id="body_wrap">
+	<div id="modal" class="modal hide fade">
+	<div id="modal_inner">
+  <div class="modal-header">
+  	<img src="images/ui/modal_logo.png" />
+    <a href="#" class="close">&times;</a>
+  </div>
+  <div class="modal-body">
+    <h3>Concert? DJ? Bar Band? We'll find it for you.</h3>
+    <p>We're hard at work building you an awesome mobile app.
+    While you wait, use this website to find concerts. We'll be adding features daily. Be sure to tell your friends!</p>
+  </div>
+	<input type="submit" value="Try It!" name="subscribe" id="try" class="button btn CTA">
+  </div>
+</div>
+<!--	<div id="bg">
+		<div class="locPnl">
+			<div id="cls"><span>&#xD7;</span></div>
+			<div id="found"></div>
+			<h3>Enter City</h3>
+			<input type="input" id="adrs" value="Seattle" />
+			<input type="button" class="button" id="sub" value="Go" />
+		</div>
+	</div>-->
+	<div id="shows">
+		<div class="rndTop hdrGrad">
+			<a href="http://www.atndr.com" class="logo">atndr</a><br />
+			<div id="list_btn" class="button">Hide List</div>
+			<div id="filters">
+<!--				<a class="btn button ctrl">All</a>-->
+				<input id="textSearch" type="text" name="" placeholder="Search cities&hellip;" value="" />
+				<a id="searchBtn" class="btn button ctrl">S</a>
+				<a rel='twipsy' title='My Current Location' id="currloc" class="btn button ctrl so">C</a>
+				<a rel='twipsy' title='Refresh shows in this area' class="btn button ctrl rm">R</a>
+			</div>
+		</div>
+		<div id="results">
+			<div id="loading">
+				<p>Enter a city above or enable geolocation in your browsers preferences.</p>
+			</div>
+			<div id="resultsList">
+			
+			</div>
+
+		</div>
+		<div id="eventCount" class="rndBottom">
+			<div id="mc_embed_signup">
+				<p class="hideSuccess">Sign up for updates or follow <a href="http://twitter.com/AtndrApp">@AtndrApp</a></p>
+				<form action="http://atndr.us2.list-manage.com/subscribe/post?u=d761299f0874824fbd9b065b4&amp;id=7daf7a8829" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+					
+				<div class="mc-field-group" class="hideSuccess">
+					<input type="email" value="" name="EMAIL" placeholder="Email address&hellip;" class="required email hideSuccess" id="mce-EMAIL">
+				</div>
+				<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button btn hideSuccess CTA"></div>
+					<div id="mce-responses" class="clear">
+						<div class="response" id="mce-error-response" style="display:none"></div>
+						<div class="response" id="mce-success-response" style="display:none"></div>
+					</div>	
+				</form>
+			</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="map_canvas" style=""></div>
+</div>
+
+
+<script id="infowindow-template" type="text/x-handlebars-template">
+<div class="infoWindow">
+	<div class="bubble">
+		
+		<h2>{{name}}</h2>
+		<div class="pagination">
+			{{shows.length}}
+		</div>
+		{{#each shows}}
+			<div class="acts">
+				{{#each artists}}
+					{{name}},
+				{{/each}}
+			</div>
+			<div class="venue">
+				<span class="bubbleDate">{{pretty_date}}</span>
+			</div>
+
+		{{/each}}
+	</div>
+</div>
+</script>
+
+<script id="list-template" type="text/x-handlebars-template">
+	<ul>
+		{{#each .}}
+			<li>
+				<span>{{venue.name}}</span>
+				<span>{{pretty_date}}</span>
+				<strong>
+				{{#each artists}}
+					{{name}},
+				{{/each}}
+				</strong>
+			</li>
+		{{/each}}
+	</ul>
+</script>
